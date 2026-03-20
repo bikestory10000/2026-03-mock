@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구문분석 – 관광의 이중성: 현실과 환상</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 30px 40px;
+    line-height: 2.0;
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #00d2ff;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+
+  .answer-box {
+    background: #16213e;
+    border-left: 4px solid #00d2ff;
+    padding: 12px 18px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .answer-box strong { color: #00d2ff; }
+
+  .sentence-block {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a4a;
+  }
+
+  .sent-num {
+    display: inline-block;
+    background: #00d2ff;
+    color: #1a1a2e;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .eng {
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .kor {
+    color: #ff6b6b;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+
+  .grammar-note {
+    color: #ffd43b;
+    font-size: 12.5px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding-left: 4px;
+  }
+  .grammar-note::before {
+    content: "▶ ";
+    color: #ffa94d;
+  }
+
+  .highlight-yellow {
+    background: rgba(255, 212, 59, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-green {
+    background: rgba(81, 207, 102, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-orange {
+    background: rgba(255, 169, 77, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-blue {
+    background: rgba(0, 210, 255, 0.2);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-pink {
+    background: rgba(255, 107, 107, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .bracket { color: #74c0fc; font-weight: 700; }
+  .slash { color: #888; margin: 0 2px; }
+
+  .tree-box {
+    background: #111828;
+    border: 1px dashed #3a3a5a;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #a0c4ff;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .tree-box .t-s { color: #74c0fc; font-weight: 700; }
+  .tree-box .t-v { color: #ff8fab; font-weight: 700; }
+  .tree-box .t-o { color: #69db7c; font-weight: 700; }
+  .tree-box .t-pp { color: #e599f7; }
+  .tree-box .t-adv { color: #ffa94d; }
+  .tree-box .t-cl { color: #74c0fc; }
+  .tree-box .t-label { color: #888; font-size: 11px; }
+
+  .vocab-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 30px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-section h3 {
+    color: #00d2ff;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .vocab-item {
+    display: inline-block;
+    background: #1a1a2e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin: 3px 4px;
+    font-size: 13px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-item .en { color: #74c0fc; font-weight: 500; }
+  .vocab-item .ko { color: #e0e0e0; }
+</style>
+</head>
+<body>
+
+<h1>✈️ 관광의 미학: 상상과 현실의 결합</h1>
+<div class="subtitle">인라인 직역 구문분석 · 편입영어 (민쌤의 시크릿 분석)</div>
+
+<div class="answer-box">
+  <strong>정답: ③ tangible — myth</strong> (실재하는 — 신화/환상) — 문학·영화와 달리 <strong>'실제적인(tangible)'</strong> 세계로 이끌면서도, 여전히 <strong>'신화(myth)'</strong> 같은 환상 속에 머물러 있다는 논리.
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">simultaneously: 동시에 (상상과 현실이 함께 존재함을 강조)</div>
+  <div class="grammar-note">that of the physical world: that은 앞에 나온 realm을 받는 지시대명사</div>
+  <div class="eng">
+    <span class="sent-num">1</span>
+    Tourism <span class="highlight-green">takes place</span> <span class="highlight-orange">simultaneously</span> <span class="slash">/</span> in the realm of the imagination <span class="slash">/</span> and <span class="highlight-yellow">that</span> of the physical world.
+  </div>
+  <div class="kor">
+    관광은 발생한다 동시에 <span class="slash">/</span> 상상의 영역에서 <span class="slash">/</span> 그리고 물리적 세계의 영역(그것)에서.
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장1 트리]</span>
+<span class="t-s">Tourism</span> (S)
+└─ <span class="t-v">takes place</span> (V)
+    ├─ <span class="t-adv">simultaneously</span> (부사)
+    └─ <span class="t-pp">in [the realm of A and that of B]</span> (부사구)
+        └─ <span class="t-label">*A: imagination, B: physical world</span></div>
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">In contrast to: ~와 대조적으로 (영화/문학 ↔ 관광)</div>
+  <div class="grammar-note">leads to: ~로 이끌다 (결과)</div>
+  <div class="grammar-note">'real', [tangible]: 쉼표(,)는 동격 내지 나열. '실제적이고 실체가 있는'</div>
+  <div class="eng">
+    <span class="sent-num">2</span>
+    <span class="highlight-orange">In contrast to</span> literature or film, <span class="slash">/</span> it <span class="highlight-green">leads to</span> 'real', <span class="highlight-pink">[tangible]</span> worlds,
+  </div>
+  <div class="kor">
+    문학이나 영화와 대조적으로, <span class="slash">/</span> 그것(관광)은 이끈다 '실제적인', <span class="highlight-pink">[만질 수 있는]</span> 세계로,
+  </div>
+
+  <div class="grammar-note">while nevertheless: 그럼에도 불구하고 (역접/양보의 시그널)</div>
+  <div class="grammar-note">tied to: ~에 묶여 있는, 결부된</div>
+  <div class="grammar-note">fantasies, dreams, wishes — and [myth]: 환상적인 요소들의 나열</div>
+  <div class="eng">
+    <span class="highlight-orange">while nevertheless</span> <span class="highlight-green">remaining tied to</span> the sphere of fantasies, dreams, wishes — and <span class="highlight-blue">[myth]</span>.
+  </div>
+  <div class="kor">
+    반면에 그럼에도 불구하고 <span class="slash">/</span> 여전히 묶여 있다 <span class="slash">/</span> 환상, 꿈, 소망의 영역에 — 그리고 <span class="highlight-blue">[신화(환상)]</span>에.
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장2 트리]</span>
+<span class="t-adv">In contrast to literature or film</span> (부사구·대조)
+│
+└─ <span class="t-s">it (Tourism)</span> (S)
+    ├─ <span class="t-v">leads to</span> (V1)
+    │   └─ <span class="t-o">'real', [tangible] worlds</span> (O)
+    └─ <span class="t-adv">while nevertheless remaining tied to...</span> (분사구·양보)
+        └─ <span class="t-pp">the sphere of [fantasies, dreams, wishes — and myth]</span></div>
+</div>
+
+<div class="vocab-section">
+  <h3>📝 민쌤의 핵심 어휘 노트</h3>
+  <div class="vocab-item"><span class="en">simultaneously</span> <span class="ko">동시에</span></div>
+  <div class="vocab-item"><span class="en">realm</span> <span class="ko">영역, 범위</span></div>
+  <div class="vocab-item"><span class="en">tangible</span> <span class="ko">만질 수 있는, 실질적인</span></div>
+  <div class="vocab-item"><span class="en">myth</span> <span class="ko">신화, 근거 없는 믿음(환상)</span></div>
+  <div class="vocab-item"><span class="en">incorporeal</span> <span class="ko">무형의, 실체가 없는</span></div>
+  <div class="vocab-item"><span class="en">corporeal</span> <span class="ko">형체를 가진, 신체의</span></div>
+  <div class="vocab-item"><span class="en">sphere</span> <span class="ko">구(sphere), 영역</span></div>
+</div>
+
+</body>
+</html>

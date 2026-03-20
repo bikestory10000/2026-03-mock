@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구문분석 – 포드 모델 T와 대중 교통</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 30px 40px;
+    line-height: 2.0;
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #00d2ff;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+
+  .answer-box {
+    background: #16213e;
+    border-left: 4px solid #00d2ff;
+    padding: 12px 18px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .answer-box strong { color: #00d2ff; }
+
+  .sentence-block {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a4a;
+  }
+
+  .sent-num {
+    display: inline-block;
+    background: #00d2ff;
+    color: #1a1a2e;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .eng {
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .kor {
+    color: #ff6b6b;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+
+  .grammar-note {
+    color: #ffd43b;
+    font-size: 12.5px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding-left: 4px;
+  }
+  .grammar-note::before {
+    content: "▶ ";
+    color: #ffa94d;
+  }
+
+  .highlight-yellow {
+    background: rgba(255, 212, 59, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-green {
+    background: rgba(81, 207, 102, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-orange {
+    background: rgba(255, 169, 77, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-blue {
+    background: rgba(0, 210, 255, 0.2);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-pink {
+    background: rgba(255, 107, 107, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .bracket { color: #74c0fc; font-weight: 700; }
+  .slash { color: #888; margin: 0 2px; }
+
+  .tree-box {
+    background: #111828;
+    border: 1px dashed #3a3a5a;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #a0c4ff;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .tree-box .t-s { color: #74c0fc; font-weight: 700; }
+  .tree-box .t-v { color: #ff8fab; font-weight: 700; }
+  .tree-box .t-o { color: #69db7c; font-weight: 700; }
+  .tree-box .t-pp { color: #e599f7; }
+  .tree-box .t-adv { color: #ffa94d; }
+  .tree-box .t-cl { color: #74c0fc; }
+  .tree-box .t-label { color: #888; font-size: 11px; }
+
+  .vocab-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 30px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-section h3 {
+    color: #00d2ff;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .vocab-item {
+    display: inline-block;
+    background: #1a1a2e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin: 3px 4px;
+    font-size: 13px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-item .en { color: #74c0fc; font-weight: 500; }
+  .vocab-item .ko { color: #e0e0e0; }
+</style>
+</head>
+<body>
+
+<h1>🚗 포드 모델 T와 개인용 운송 수단의 대중화</h1>
+<div class="subtitle">인라인 직역 구문분석 · 편입영어 (민쌤의 시크릿 분석)</div>
+
+<div class="answer-box">
+  <strong>정답: ④ unattainable</strong> (얻을 수 없는, 도달할 수 없는) — <strong>'once(과거)'</strong>와 <strong>'all but the wealthiest(최상류층 제외)'</strong>를 통해 과거 일반인에겐 불가능했던 특권임을 추론!
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">gave + O1 + O2: 4형식 수여동사 (O1에게 O2를 주다)</div>
+  <div class="grammar-note">the masses: 대중, 서민 (부유층과 대조되는 시그널 단어)</div>
+  <div class="eng">
+    <span class="sent-num">1</span>
+    <span class="highlight-yellow">The Model T</span> <span class="highlight-green">gave</span> personal transport <span class="slash">/</span> <span class="highlight-orange">to the masses</span>,
+  </div>
+  <div class="kor">
+    모델 T는 <span class="slash">/</span> 주었다 개인용 운송 수단을 <span class="slash">/</span> 대중들에게,
+  </div>
+
+  <div class="grammar-note">allow + O + to-V: 5형식 (O가 V하도록 허용하다/가능하게 하다)</div>
+  <div class="grammar-note">wherever they wished: 복합관계부사절 (그들이 원하는 어디든지)</div>
+  <div class="eng">
+    and <span class="highlight-green">allowed</span> working-class families <span class="slash">/</span> <span class="highlight-pink">to travel</span> <span class="bracket">[</span>wherever they wished<span class="bracket">]</span>,
+  </div>
+  <div class="kor">
+    그리고 허용했다 노동자 계급 가족들이 <span class="slash">/</span> 여행하는 것을 <span class="slash">/</span> 그들이 원하는 어디든지,
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장1 트리]</span>
+<span class="t-s">The Model T</span> (S)
+├─ <span class="t-v">gave</span> (V1)
+│   ├─ <span class="t-o">personal transport</span> (O)
+│   └─ <span class="t-pp">to the masses</span> (부사구)
+└─ <span class="t-v">allowed</span> (V2·병렬)
+    ├─ <span class="t-o">working-class families</span> (O)
+    └─ <span class="t-adv">to travel [wherever they wished]</span> (OC·to부정사)</div>
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">a privilege: 앞 문장 전체 내용을 가리키는 '동격 명사'</div>
+  <div class="grammar-note">once: 한때 (과거와 현재의 시간적 대조를 만드는 핵심 시그널)</div>
+  <div class="grammar-note">★ 빈칸 정답: unattainable (부유층 외에는 도달할 수 없었던)</div>
+  <div class="eng">
+    <span class="sent-num">2</span>
+    <span class="highlight-blue">a privilege</span> <span class="slash">/</span> <span class="highlight-orange">once</span> <span class="highlight-pink">unattainable</span> <span class="slash">/</span>
+  </div>
+  <div class="kor">
+    하나의 특권인 <span class="slash">/</span> 한때 도달할 수 없었던 <span class="slash">/</span>
+  </div>
+
+  <div class="grammar-note">all but: ~을 제외한 모두 (= except)</div>
+  <div class="grammar-note">the wealthiest: 최상급 (가장 부유한)</div>
+  <div class="eng">
+    for <span class="highlight-yellow">all but</span> the wealthiest Americans.
+  </div>
+  <div class="kor">
+    가장 부유한 미국인들을 제외한 모든 이들에게.
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장2 트리]</span>
+<span class="t-cl">a privilege</span> (동격 명사구)
+│
+└─ <span class="t-adv">once</span> (부사·시그널)
+    └─ <span class="t-c">unattainable</span> (형용사 수식·정답)
+        └─ <span class="t-pp">for [all but] the wealthiest Americans</span> (부사구)
+            └─ <span class="t-label">*all but: ~을 제외한 모두</span></div>
+</div>
+
+<div class="vocab-section">
+  <h3>📝 민쌤의 핵심 어휘 노트</h3>
+  <div class="vocab-item"><span class="en">transport</span> <span class="ko">운송 수단</span></div>
+  <div class="vocab-item"><span class="en">the masses</span> <span class="ko">대중, 서민</span></div>
+  <div class="vocab-item"><span class="en">working-class</span> <span class="ko">노동자 계급의</span></div>
+  <div class="vocab-item"><span class="en">wherever</span> <span class="ko">~하는 곳은 어디든지</span></div>
+  <div class="vocab-item"><span class="en">privilege</span> <span class="ko">특권</span></div>
+  <div class="vocab-item"><span class="en">once</span> <span class="ko">한때, 이전에</span></div>
+  <div class="vocab-item"><span class="en">unattainable</span> <span class="ko">도달할 수 없는</span></div>
+  <div class="vocab-item"><span class="en">all but</span> <span class="ko">~을 제외한 모두 / 거의</span></div>
+  <div class="vocab-item"><span class="en">wealthiest</span> <span class="ko">가장 부유한</span></div>
+</div>
+
+</body>
+</html>

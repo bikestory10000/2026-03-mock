@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구문분석 – 공소시효와 기소 여부</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 30px 40px;
+    line-height: 2.0;
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #00d2ff;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+
+  .answer-box {
+    background: #16213e;
+    border-left: 4px solid #00d2ff;
+    padding: 12px 18px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .answer-box strong { color: #00d2ff; }
+
+  .sentence-block {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a4a;
+  }
+
+  .sent-num {
+    display: inline-block;
+    background: #00d2ff;
+    color: #1a1a2e;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .eng {
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .kor {
+    color: #ff6b6b;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+
+  .grammar-note {
+    color: #ffd43b;
+    font-size: 12.5px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding-left: 4px;
+  }
+  .grammar-note::before {
+    content: "▶ ";
+    color: #ffa94d;
+  }
+
+  .highlight-yellow {
+    background: rgba(255, 212, 59, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-green {
+    background: rgba(81, 207, 102, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-orange {
+    background: rgba(255, 169, 77, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-pink {
+    background: rgba(255, 107, 107, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .bracket { color: #74c0fc; font-weight: 700; }
+  .slash { color: #888; margin: 0 2px; }
+
+  .tree-box {
+    background: #111828;
+    border: 1px dashed #3a3a5a;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #a0c4ff;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .tree-box .t-s { color: #74c0fc; font-weight: 700; }
+  .tree-box .t-v { color: #ff8fab; font-weight: 700; }
+  .tree-box .t-o { color: #69db7c; font-weight: 700; }
+  .tree-box .t-pp { color: #e599f7; }
+  .tree-box .t-adv { color: #ffa94d; }
+  .tree-box .t-cl { color: #74c0fc; }
+  .tree-box .t-label { color: #888; font-size: 11px; }
+
+  .vocab-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 30px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-section h3 {
+    color: #00d2ff;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .vocab-item {
+    display: inline-block;
+    background: #1a1a2e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin: 3px 4px;
+    font-size: 13px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-item .en { color: #74c0fc; font-weight: 500; }
+  .vocab-item .ko { color: #e0e0e0; }
+</style>
+</head>
+<body>
+
+<h1>⚖️ 공소시효 만료와 불기소 처분</h1>
+<div class="subtitle">인라인 직역 구문분석 · 편입영어 (민쌤의 시크릿 분석)</div>
+
+<div class="answer-box">
+  <strong>정답: ③ expired</strong> (만료되다, 기한이 지나다) — <strong>'statute of limitations(공소시효)'</strong>가 지났기 때문에 기소할 수 없다는 문맥!
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">Despite + N: ~에도 불구하고 (양보/역접의 전치사구)</div>
+  <div class="grammar-note">DNA evidence: 결정적인 단서 (기소해야 할 이유)</div>
+  <div class="eng">
+    <span class="sent-num">1</span>
+    <span class="highlight-orange">Despite</span> the DNA evidence,
+  </div>
+  <div class="kor">
+    DNA 증거에도 불구하고,
+  </div>
+
+  <div class="grammar-note">will not be prosecuted: 미래 수동태 (기소되지 않을 것이다)</div>
+  <div class="grammar-note">first-degree murder: 1급 살인 (중범죄)</div>
+  <div class="eng">
+    Mr. Lee <span class="highlight-green">will not be prosecuted</span> <span class="slash">/</span> for first-degree murders
+  </div>
+  <div class="kor">
+    이 씨는 기소되지 않을 것이다 <span class="slash">/</span> 1급 살인 혐의로
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장1 트리: 주절]</span>
+<span class="t-adv">Despite the DNA evidence</span> (부사구·역접)
+│
+└─ <span class="t-s">Mr. Lee</span> (S)
+    └─ <span class="t-v">will not be prosecuted</span> (V·수동태)
+        └─ <span class="t-pp">for first-degree murders</span> (부사구)</div>
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">because: 이유의 접속사 (시그널: 기소되지 않는 '이유' 제시)</div>
+  <div class="grammar-note">statute of limitations: 공소시효 (법적 제한 시간)</div>
+  <div class="eng">
+    <span class="sent-num">2</span>
+    <span class="highlight-orange">because</span> the country’s <span class="highlight-yellow">statute of limitations</span> <span class="slash">/</span> for his alleged crimes
+  </div>
+  <div class="kor">
+    왜냐하면 그 나라의 공소시효가 <span class="slash">/</span> 그의 혐의가 있는 범죄들에 대한
+  </div>
+
+  <div class="grammar-note">has [expired]: 현재완료 (과거에 만료되어 지금 기소 불가능한 상태)</div>
+  <div class="eng">
+    <span class="highlight-green">has [expired]</span>.
+  </div>
+  <div class="kor">
+    [만료되었기] 때문이다.
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장2 트리: 종속절]</span>
+<span class="t-cl">because (접속사)</span>
+└─ <span class="t-s">the country’s statute of limitations</span> (S)
+    ├─ <span class="t-pp">for his alleged crimes</span> (수식어)
+    └─ <span class="t-v">has [expired]</span> (V·현재완료)
+        └─ <span class="t-label">*단서: 시간 제한이 끝남(기소 불가 원인)</span></div>
+</div>
+
+<div class="vocab-section">
+  <h3>📝 민쌤의 핵심 어휘 노트</h3>
+  <div class="vocab-item"><span class="en">despite</span> <span class="ko">~에도 불구하고</span></div>
+  <div class="vocab-item"><span class="en">prosecute</span> <span class="ko">기소하다</span></div>
+  <div class="vocab-item"><span class="en">first-degree murder</span> <span class="ko">1급 살인</span></div>
+  <div class="vocab-item"><span class="en">statute of limitations</span> <span class="ko">공소시효</span></div>
+  <div class="vocab-item"><span class="en">alleged</span> <span class="ko">(증거 없이) 주장된, 혐의가 있는</span></div>
+  <div class="vocab-item"><span class="en">expire</span> <span class="ko">만료되다, 끝나다</span></div>
+  <div class="vocab-item"><span class="en">aspire</span> <span class="ko">열망하다</span></div>
+  <div class="vocab-item"><span class="en">inspire</span> <span class="ko">영감을 주다</span></div>
+  <div class="vocab-item"><span class="en">conspire</span> <span class="ko">공모하다, 음모를 꾸미다</span></div>
+</div>
+
+</body>
+</html>

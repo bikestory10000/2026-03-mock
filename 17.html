@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구문분석 – 17번 정직한 지나</title>
+<style>
+  /* 스타일 시트는 위와 동일하게 유지 (통일성) */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a2e; color: #e0e0e0; font-family: 'Noto Sans KR', sans-serif; padding: 30px 40px; line-height: 2.0; font-size: 15px; }
+  h1 { text-align: center; color: #00d2ff; font-size: 22px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 30px; }
+  .answer-box { background: #16213e; border-left: 4px solid #00d2ff; padding: 12px 18px; margin-bottom: 30px; border-radius: 0 8px 8px 0; font-size: 14px; }
+  .answer-box strong { color: #00d2ff; }
+  .sentence-block { background: #16213e; border-radius: 12px; padding: 24px 28px; margin-bottom: 24px; border: 1px solid #2a2a4a; }
+  .eng { font-size: 17px; color: #ffffff; line-height: 1.8; margin-bottom: 2px; font-weight: 500; }
+  .kor { color: #ff6b6b; font-size: 14px; line-height: 1.7; margin-bottom: 10px; padding-left: 4px; }
+  .grammar-note { color: #ffd43b; font-size: 12.5px; font-weight: 500; margin-bottom: 2px; padding-left: 4px; }
+  .grammar-note::before { content: "▶ "; color: #ffa94d; }
+  .highlight-pink { background: rgba(255, 107, 107, 0.25); padding: 1px 4px; border-radius: 3px; }
+  .highlight-orange { background: rgba(255, 169, 77, 0.25); padding: 1px 4px; border-radius: 3px; }
+  .tree-box { background: #111828; border: 1px dashed #3a3a5a; border-radius: 8px; padding: 14px 18px; margin-top: 10px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.7; color: #a0c4ff; white-space: pre-wrap; }
+  .t-label { color: #888; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<h1>⚖️ 17. 유혹을 이기는 양심</h1>
+<div class="subtitle">민쌤의 시크릿 구문분석</div>
+
+<div class="answer-box">
+  <strong>정답: (2) scrupulous</strong> (양심적인, 세심한) — 답을 볼 수 있는 상황(Even though)에도 부정행위를 하지 않는 정직한 성격!
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">Even though: 비록 ~일지라도 (양보의 접속사 → 주절과 반대 상황)</div>
+  <div class="eng">
+    <span class="highlight-orange">Even though</span> she could see Tom’s answer sheet,
+  </div>
+  <div class="kor">
+    비록 그녀가 톰의 답안지를 볼 수 있었음에도 불구하고,
+  </div>
+
+  <div class="grammar-note">who: 주격 관계대명사 (student 수식)</div>
+  <div class="grammar-note">never considered cheating: 부정행위를 절대 고려하지 않음 → 빈칸의 결정적 성격 단서</div>
+  <div class="eng">
+    Zeena was a <span class="highlight-pink">[scrupulous]</span> student <span class="highlight-pink">[who never considered cheating]</span>.
+  </div>
+  <div class="kor">
+    지나는 [양심적인] 학생이었다 <span class="slash">/</span> (부정행위를 절대 고려하지 않았던).
+  </div>
+
+  <div class="tree-box"><span class="t-label">[17번 논리 트리]</span>
+<span class="highlight-orange">Even though [상황: 유혹]</span>
+│
+└─ <span class="highlight-pink">Zeena [성격: scrupulous]</span>
+    └─ <span class="t-label">*Definition: 양심의 가책을 느껴 아주 작은 잘못도 피하는 성격</span></div>
+</div>
+
+</body>
+</html>

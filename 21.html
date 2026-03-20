@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구문분석 – 카메라와 자전거의 욕구 비교</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 30px 40px;
+    line-height: 2.0;
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #00d2ff;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+
+  .answer-box {
+    background: #16213e;
+    border-left: 4px solid #00d2ff;
+    padding: 12px 18px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .answer-box strong { color: #00d2ff; }
+
+  .sentence-block {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a4a;
+  }
+
+  .sent-num {
+    display: inline-block;
+    background: #00d2ff;
+    color: #1a1a2e;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .eng {
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .kor {
+    color: #ff6b6b;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+
+  .grammar-note {
+    color: #ffd43b;
+    font-size: 12.5px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding-left: 4px;
+  }
+  .grammar-note::before {
+    content: "▶ ";
+    color: #ffa94d;
+  }
+
+  .highlight-yellow {
+    background: rgba(255, 212, 59, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-green {
+    background: rgba(81, 207, 102, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-orange {
+    background: rgba(255, 169, 77, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-pink {
+    background: rgba(255, 107, 107, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .bracket { color: #74c0fc; font-weight: 700; }
+  .slash { color: #888; margin: 0 2px; }
+
+  .tree-box {
+    background: #111828;
+    border: 1px dashed #3a3a5a;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #a0c4ff;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .tree-box .t-s { color: #74c0fc; font-weight: 700; }
+  .tree-box .t-v { color: #ff8fab; font-weight: 700; }
+  .tree-box .t-o { color: #69db7c; font-weight: 700; }
+  .tree-box .t-pp { color: #e599f7; }
+  .tree-box .t-adv { color: #ffa94d; }
+  .tree-box .t-cl { color: #74c0fc; }
+  .tree-box .t-label { color: #888; font-size: 11px; }
+
+  .vocab-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 30px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-section h3 {
+    color: #00d2ff;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .vocab-item {
+    display: inline-block;
+    background: #1a1a2e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin: 3px 4px;
+    font-size: 13px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-item .en { color: #74c0fc; font-weight: 500; }
+  .vocab-item .ko { color: #e0e0e0; }
+</style>
+</head>
+<body>
+
+<h1>📷 카메라와 자전거: 인간의 본질적 욕구</h1>
+<div class="subtitle">인라인 직역 구문분석 · 편입영어 (민쌤의 시크릿 분석)</div>
+
+<div class="answer-box">
+  <strong>정답: ② freedom of movement</strong> (이동의 자유) — 카메라(추억 보존)와 자전거(이동의 자유)를 대등한 가치의 욕구로 비교하고 있음.
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">Though: 양보 접속사 (비록 ~일지라도) → 카메라와 자전거의 실용성 대조</div>
+  <div class="grammar-note">be of + 명사: 형용사구 (~한 특징이 있다) → be of use = useful</div>
+  <div class="eng">
+    <span class="sent-num">1</span>
+    <span class="highlight-orange">Though</span> the camera <span class="highlight-green">was of less practical use</span> <span class="slash">/</span> than the bicycle,
+  </div>
+  <div class="kor">
+    비록 카메라는 덜 실용적이었지만 <span class="slash">/</span> 자전거보다,
+  </div>
+
+  <div class="grammar-note">too: 또한 (자전거처럼 카메라 또한 즐거움을 준다는 병렬 시그널)</div>
+  <div class="eng">
+    it <span class="highlight-pink">too</span> brought great joy to people,
+  </div>
+  <div class="kor">
+    그것(카메라) 또한 사람들에게 큰 즐거움을 가져다주었다,
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장1 트리]</span>
+<span class="t-adv">Though the camera was of less practical use ~</span> (양보절)
+│
+└─ <span class="t-s">it (the camera)</span> (S)
+    ├─ <span class="t-adv">too</span> (부사)
+    └─ <span class="t-v">brought</span> (V)
+        ├─ <span class="t-o">great joy</span> (O)
+        └─ <span class="t-pp">to people</span> (부사구)</div>
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">because: 이유의 접속사 (즐거움을 주는 구체적 이유 제시)</div>
+  <div class="grammar-note">long-felt and deep-seated: '오래 느끼고 뿌리 깊은' (인간의 보편적 욕구 수식)</div>
+  <div class="eng">
+    <span class="sent-num">2</span>
+    <span class="highlight-orange">because</span> it <span class="highlight-green">answered</span> a long-felt and deep-seated human need
+  </div>
+  <div class="kor">
+    왜냐하면 그것이 답했기 때문이다(충족시켰기 때문이다) <span class="slash">/</span> 오래되고 뿌리 깊은 인간의 욕구에
+  </div>
+
+  <div class="grammar-note">which: 주격 관계대명사 (human need를 선행사로 수식)</div>
+  <div class="grammar-note">just as great as: 원급 비교 (~만큼이나 거대한) → 카메라의 욕구와 자전거의 욕구를 동급으로 치환</div>
+  <div class="eng">
+    <span class="bracket">[</span><span class="highlight-yellow">which</span> is perhaps <span class="highlight-pink">just as great as</span> the need for <span class="highlight-blue">[freedom of movement]</span><span class="bracket">]</span>.
+  </div>
+  <div class="kor">
+    (아마도 <span class="slash">/</span> ~만큼이나 거대한 <span class="slash">/</span> [이동의 자유]에 대한 욕구만큼이나.)
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장2 트리]</span>
+<span class="t-cl">because (접속사)</span>
+└─ <span class="t-s">it</span> (S)
+    └─ <span class="t-v">answered</span> (V)
+        └─ <span class="t-o">a human need</span> (O)
+            └─ <span class="t-cl">[which is ~ freedom of movement]</span> (관계절)
+                └─ <span class="t-v">is</span> (V)
+                    └─ <span class="t-c">just as great as ~ [정답]</span> (C·비교구문)</div>
+</div>
+
+<div class="vocab-section">
+  <h3>📝 민쌤의 핵심 어휘 노트</h3>
+  <div class="vocab-item"><span class="en">practical use</span> <span class="ko">실용적인 용도</span></div>
+  <div class="vocab-item"><span class="en">long-felt</span> <span class="ko">오래 느껴온</span></div>
+  <div class="vocab-item"><span class="en">deep-seated</span> <span class="ko">뿌리 깊은</span></div>
+  <div class="vocab-item"><span class="en">answer a need</span> <span class="ko">욕구에 부응하다</span></div>
+  <div class="vocab-item"><span class="en">freedom of movement</span> <span class="ko">이동의 자유</span></div>
+  <div class="vocab-item"><span class="en">preservation of memories</span> <span class="ko">추억의 보존</span></div>
+</div>
+
+</body>
+</html>

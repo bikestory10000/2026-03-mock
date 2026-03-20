@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구문분석 – 신체적 자율권과 법적 규제</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding: 30px 40px;
+    line-height: 2.0;
+    font-size: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #00d2ff;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+
+  .answer-box {
+    background: #16213e;
+    border-left: 4px solid #00d2ff;
+    padding: 12px 18px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .answer-box strong { color: #00d2ff; }
+
+  .sentence-block {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a4a;
+  }
+
+  .sent-num {
+    display: inline-block;
+    background: #00d2ff;
+    color: #1a1a2e;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .eng {
+    font-size: 17px;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  .kor {
+    color: #ff6b6b;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+
+  .grammar-note {
+    color: #ffd43b;
+    font-size: 12.5px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    padding-left: 4px;
+  }
+  .grammar-note::before {
+    content: "▶ ";
+    color: #ffa94d;
+  }
+
+  .highlight-yellow {
+    background: rgba(255, 212, 59, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-green {
+    background: rgba(81, 207, 102, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-orange {
+    background: rgba(255, 169, 77, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-blue {
+    background: rgba(0, 210, 255, 0.2);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .highlight-pink {
+    background: rgba(255, 107, 107, 0.25);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .bracket { color: #74c0fc; font-weight: 700; }
+  .slash { color: #888; margin: 0 2px; }
+
+  .tree-box {
+    background: #111828;
+    border: 1px dashed #3a3a5a;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #a0c4ff;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .tree-box .t-s { color: #74c0fc; font-weight: 700; }
+  .tree-box .t-v { color: #ff8fab; font-weight: 700; }
+  .tree-box .t-o { color: #69db7c; font-weight: 700; }
+  .tree-box .t-pp { color: #e599f7; }
+  .tree-box .t-adv { color: #ffa94d; }
+  .tree-box .t-cl { color: #74c0fc; }
+  .tree-box .t-label { color: #888; font-size: 11px; }
+
+  .vocab-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 30px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-section h3 {
+    color: #00d2ff;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .vocab-item {
+    display: inline-block;
+    background: #1a1a2e;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin: 3px 4px;
+    font-size: 13px;
+    border: 1px solid #2a2a4a;
+  }
+  .vocab-item .en { color: #74c0fc; font-weight: 500; }
+  .vocab-item .ko { color: #e0e0e0; }
+</style>
+</head>
+<body>
+
+<h1>⚖️ 신체적 자율권과 국가의 법적 규제</h1>
+<div class="subtitle">인라인 직역 구문분석 · 편입영어 (민쌤의 시크릿 분석)</div>
+
+<div class="answer-box">
+  <strong>정답: ① autonomy</strong> (자율성, 자율권) — <strong>'so(인과)'</strong> 시그널과 <strong>'no laws that ban...(금지법 없음)'</strong>이라는 단서를 통해 도출!
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">recognize: 인정하다, 인식하다 (여기서는 권리를 존중한다는 의미)</div>
+  <div class="grammar-note">bodily autonomy: 신체적 자율권 (자기 몸을 스스로 결정할 권리)</div>
+  <div class="eng">
+    <span class="sent-num">1</span>
+    Governments <span class="highlight-green">recognize</span> <span class="highlight-yellow">our bodily [autonomy]</span>,
+  </div>
+  <div class="kor">
+    정부들은 인정한다 <span class="slash">/</span> 우리의 신체적 자율성을,
+  </div>
+
+  <div class="grammar-note">so: 인과관계의 접속사 (원인 → 결과)</div>
+  <div class="eng">
+    <span class="highlight-orange">so</span>
+  </div>
+  <div class="kor">
+    그래서 (그러므로)
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장1 트리: 원인]</span>
+<span class="t-s">Governments</span> (S)
+└─ <span class="t-v">recognize</span> (V)
+    └─ <span class="t-o">our bodily [autonomy]</span> (O) 
+        └─ <span class="t-label">*빈칸: 개인의 권리 인정(원인)</span></div>
+</div>
+
+<div class="sentence-block">
+  <div class="grammar-note">there are no + 복수명사: ~인 명사들이 없다 (laws가 복수이므로 are)</div>
+  <div class="grammar-note">federal laws: 연방법 (중앙 정부의 법률)</div>
+  <div class="eng">
+    <span class="sent-num">2</span>
+    there are <span class="highlight-green">no federal laws</span>
+  </div>
+  <div class="kor">
+    (~이) 없다 <span class="slash">/</span> 연방법이
+  </div>
+
+  <div class="grammar-note">that: 주격 관계대명사 (선행사 laws 수식)</div>
+  <div class="grammar-note">ban A from B(ing): A가 B하는 것을 금지하다 (전치사 from 필수)</div>
+  <div class="eng">
+    <span class="bracket">[</span><span class="highlight-yellow">that</span> <span class="highlight-pink">ban</span> people <span class="highlight-blue">from getting</span> a tattoo, a tongue-piercing<span class="bracket">]</span>
+  </div>
+  <div class="kor">
+    (금지하는 <span class="slash">/</span> 사람들을 <span class="slash">/</span> 문신을 하거나 혀 피어싱을 하는 것으로부터)
+  </div>
+
+  <div class="grammar-note">or even: 혹은 심지어 (병렬 구조의 마지막 강조)</div>
+  <div class="grammar-note">committing suicide: 자살하는 것 (getting과 병렬)</div>
+  <div class="eng">
+    <span class="slash">/</span> or even <span class="highlight-pink">committing suicide</span>.
+  </div>
+  <div class="kor">
+    또는 심지어 자살하는 것(으로부터).
+  </div>
+
+  <div class="tree-box"><span class="t-label">[문장2 트리: 결과]</span>
+there(부사) <span class="t-v">are</span> (V)
+└─ <span class="t-s">no federal laws</span> (S)
+    └─ <span class="t-cl">[that절 — 관계대명사]</span>
+        ├─ <span class="t-v">ban</span> (V)
+        ├─ <span class="t-o">people</span> (O)
+        └─ <span class="t-pp">from [getting... or even committing...]</span> (부사구)
+            └─ <span class="t-label">*단서: 금지법이 없음(결과)</span></div>
+</div>
+
+<div class="vocab-section">
+  <h3>📝 민쌤의 핵심 어휘 노트</h3>
+  <div class="vocab-item"><span class="en">recognize</span> <span class="ko">인정하다, 인식하다</span></div>
+  <div class="vocab-item"><span class="en">autonomy</span> <span class="ko">자율성, 자립</span></div>
+  <div class="vocab-item"><span class="en">federal</span> <span class="ko">연방의, 중앙 정부의</span></div>
+  <div class="vocab-item"><span class="en">ban A from B</span> <span class="ko">A가 B하는 것을 금지하다</span></div>
+  <div class="vocab-item"><span class="en">tongue-piercing</span> <span class="ko">혀 피어싱</span></div>
+  <div class="vocab-item"><span class="en">commit suicide</span> <span class="ko">자살하다</span></div>
+  <div class="vocab-item"><span class="en">integrity</span> <span class="ko">진실성, 온전함</span></div>
+  <div class="vocab-item"><span class="en">conformity</span> <span class="ko">순응, 일치</span></div>
+</div>
+
+</body>
+</html>
